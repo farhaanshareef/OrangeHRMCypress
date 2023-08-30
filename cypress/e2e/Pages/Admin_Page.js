@@ -18,70 +18,54 @@ export class AdminPage {
     input_confirm_password= ":nth-child(2) > .oxd-input-group > :nth-child(2) > .oxd-input"
     save_button= ".oxd-button--secondary"
 
-    setViewPort()
-    {
-        cy.viewport(1440, 768);
-    }
-    
-    navigate()
-    {
-        cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login')
-    }
-    enterUsername(username)
-    {
-        cy.get(this.input_username).type(username)
-    }
-    enterPassword(password)
-    {
-        cy.get(this.input_password).type(password)
-    }
-    clickLoginbutton()
-    {
-        cy.get(this.login_button).click()
-    }
-    verifyLogin()
-    {
-        cy.get(this.logo_image).should('exist');
-    }
     clickadminTab()
     {
-
-        cy.get(this.admin_menu_tab).click()
+        cy.get(this.admin_menu_tab).should('exist').click()
     }
     clickAddButton()
     {
-        cy.get(this.add_button).click()
+        cy.get(this.add_button).should('exist').click()
     }
     clickUserroleDropdown()
     {
-        cy.get(this.userroledrpdown).click()
+        cy.get(this.userroledrpdown).should('exist').click()
     }
     clickAdmin()
     {
-        cy.get(this.select_role).click()
+        cy.get(this.select_role).should('exist').click()
 
     }
     enter_employeeName(employeeName)
     {
-        cy.get(this.input_employee_name).type(employeeName)
+        //cy.get(this.input_employee_name).type(employeeName)
+
+        const expectedname = employeeName;
+        cy.get(this.input_employee_name)
+        .type(employeeName)
+        .should('have.value', expectedname);
     }
     select_employeeName()
     {
-        cy.get(this.select_employee).click();
+        cy.get(this.select_employee).should('exist').click();
 
     }
     click_statusDropdown()
     {
-        cy.get(this.status_dropdown).click()
+        cy.get(this.status_dropdown).should('exist').click()
     }
     click_enabled()
     {
-        cy.get(this.enabled_text).click()
+        cy.get(this.enabled_text).should('exist').click()
 
     }
     enter_admin_username(username)
     {
-        cy.get(this.input_admin_username).type(username)
+        //cy.get(this.input_admin_username).type(username)
+
+        const expectedname = username;
+        cy.get(this.input_admin_username)
+        .type(username)
+        .should('have.value', expectedname);
     }
     enter_admin_password(password)
     {
@@ -93,7 +77,6 @@ export class AdminPage {
     }
     click_save_button()
     {
-        cy.get(this.save_button).click()
-
+        cy.get(this.save_button).should('exist').click()
     }
 }

@@ -23,39 +23,20 @@ export class EmployeePage {
     attachmentbutton= ".orangehrm-action-header > .oxd-button"
     uploadattachment= 'input[type="file"]'
     save_button_= ".orangehrm-attachment > .orangehrm-card-container > .oxd-form > .oxd-form-actions > .oxd-button--secondary"
+    expiry_date_locator= ":nth-child(2) > .oxd-input-group > :nth-child(2) > .oxd-date-wrapper > .oxd-date-input > .oxd-input"
 
     setViewPort()
     {
         cy.viewport(1440, 768);
     }
     
-    navigate()
-    {
-        cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login')
-    }
-    enterUsername(username)
-    {
-        cy.get(this.input_username).type(username)
-    }
-    enterPassword(password)
-    {
-        cy.get(this.input_password).type(password)
-    }
-    clickLoginbutton()
-    {
-        cy.get(this.login_button).click()
-    }
-    verifyLogin()
-    {
-        cy.get(this.logo_image).should('exist');
-    }
     clickPIMButton()
     {
-        cy.get(this.pim_button).click()
+        cy.get(this.pim_button).should('exist').click()
     }
     clickAddButton()
     {
-        cy.get(this.add_employee_button).click()
+        cy.get(this.add_employee_button).should('exist').click()
     }
     uploadImage()
     {
@@ -79,18 +60,32 @@ export class EmployeePage {
     }
     enterFirstname(firstname)
     {
-        cy.get(this.input_firstname).type(firstname)
+        //cy.get(this.input_firstname).type(firstname)
 
+        const expectedtext = firstname;
+        cy.get(this.input_firstname)
+        .type(firstname)
+        .should('have.value', expectedtext);
 
     }
     entermiddlename(middlename)
     {
-        cy.get(this.input_middlename).type(middlename)
+        //cy.get(this.input_middlename).type(middlename)
 
+        const expectedtext = middlename;
+        cy.get(this.input_middlename)
+        .type(middlename)
+        .should('have.value', expectedtext);
     }
     enterlastname(lastname)
     {
-        cy.get(this.input_lastname).type(lastname)
+        //cy.get(this.input_lastname).type(lastname)
+
+        const expectedtext = lastname;
+        cy.get(this.input_lastname)
+        .type(lastname)
+        .should('have.value', expectedtext);
+
     }
     enterEmployeeID(ID)
     {
@@ -98,7 +93,7 @@ export class EmployeePage {
     }
     clickSavebutton()
     {
-        cy.get(this.save_button).click()
+        cy.get(this.save_button).should('exist').click()
     }
     enterLicenseNumber(licenseno)
     {
@@ -106,19 +101,19 @@ export class EmployeePage {
     }
     enterLicenseExpirydate(expirydate)
     {
-        cy.get(':nth-child(2) > .oxd-input-group > :nth-child(2) > .oxd-date-wrapper > .oxd-date-input > .oxd-input').type('1996-02-07')
+        cy.get(this.expiry_date_locator).type(expirydate)
     }
     clickClosebutton()
     {
-        cy.get(this.close_button).click()
+        cy.get(this.close_button).should('exist').click()
     }
     clickNationalitydropdown()
     {
-        cy.get(this.nationality_Dropdown).click()
+        cy.get(this.nationality_Dropdown).should('exist').click()
     }
     selectElementDrpdown()
     {
-        cy.get(this.select_value_nationality_drpdwn).click()
+        cy.get(this.select_value_nationality_drpdwn).should('exist').click()
     }
     clickMaritalDropdown()
     {
@@ -138,11 +133,11 @@ export class EmployeePage {
     }
     clickSaveButton_()
     {
-        cy.get(this.savebutton).click()
+        cy.get(this.savebutton).should('exist').click()
     }
     clickAttachment()
     {
-        cy.get(this.attachmentbutton).click()
+        cy.get(this.attachmentbutton).should('exist').click()
     }
     uploadFile()
     {
@@ -150,6 +145,6 @@ export class EmployeePage {
     }
     clickSave_Button_()
     {
-        cy.get(this.save_button_).click()
+        cy.get(this.save_button_).should('exist').click()
     }
 }

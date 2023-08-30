@@ -4,22 +4,23 @@ import 'cypress-file-upload'; // Import the plugin
 import { Login } from "../Pages/LoginPage";
 import { EmployeePage } from '../Pages/Employee_Page';
 
+const login_page= new Login();
 const employee_ = new EmployeePage();
 
 describe('Add New Employee', () => {
     it('Add Employee', () => {
 
-      employee_.setViewPort()
+      login_page.setViewPort()
 
-      employee_.navigate()
+      login_page.navigate()
 
-      employee_.enterUsername("Admin")
+      login_page.enterUsername("Admin")
 
-      employee_.enterPassword("admin123")
+      login_page.enterPassword("admin123")
 
-      employee_.clickLoginbutton()
+      login_page.clickLoginbutton()
 
-      employee_.verifyLogin()
+      login_page.verifyLogin()
 
       employee_.clickPIMButton()
 

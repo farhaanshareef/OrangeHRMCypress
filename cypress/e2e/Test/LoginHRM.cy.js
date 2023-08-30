@@ -20,6 +20,7 @@ describe('Login HRM', () => {
       login_Page.enterUsername("Admin1")
       login_Page.enterPassword("admin12345")
       login_Page.clickLoginbutton()
+      login_Page.checkErrorMessage()
       login_Page.verifyLogin()
-    })
+      })
 })
